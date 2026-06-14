@@ -7,12 +7,11 @@ workflows:
     scripts:
       - name: Get Flutter packages
         script: |
-          find . -name "pubspec.yaml" -maxdepth 3
           cd labflutter
           flutter packages pub get
-      - name: Build iOS
+      - name: Build iOS for simulator
         script: |
           cd labflutter
-          flutter build ios --release --no-codesign
+          flutter build ios --simulator
     artifacts:
-      - labflutter/build/ios/iphoneos/Runner.app
+      - labflutter/build/ios/iphonesimulator/Runner.app
