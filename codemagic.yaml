@@ -6,8 +6,13 @@ workflows:
       flutter: stable
     scripts:
       - name: Get Flutter packages
-        script: flutter packages pub get
+        script: |
+          find . -name "pubspec.yaml" -maxdepth 3
+          cd labflutter
+          flutter packages pub get
       - name: Build iOS
-        script: flutter build ios --release --no-codesign
+        script: |
+          cd labflutter
+          flutter build ios --release --no-codesign
     artifacts:
-      - build/ios/iphoneos/Runner.app
+      - labflutter/build/ios/iphoneos/Runner.app
